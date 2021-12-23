@@ -498,24 +498,27 @@
 		var IndexFinal = (0 - IndexAbsLeft - 10 + Number(document.getElementById("header_filters_box").scrollLeft) + (Number(document.getElementById("header_filters_box").offsetWidth - Number(document.getElementsByClassName("header_filter")[FilterIndex].offsetWidth)) / 2));
 		var IndexDynamic = Number(document.getElementsByClassName("header_filter")[FilterIndex].style.left);
 		if (IndexFinal < IndexDynamic) {
-			var IndexLeftStep = ((IndexDynamic - IndexFinal) / 25);
+			var SlideIndexLeftCount = 0;
 			var SlideIndexLeftInterval = setInterval(function () {
-				if (IndexDynamic <= IndexFinal) {
+				var IndexLeftStep = ((IndexFinal - IndexDynamic) / 25);
+				if (parseInt(document.getElementsByClassName("header_filter")[FilterIndex].style.left, 10) <= IndexFinal) {
 					clearInterval(SlideIndexLeftInterval);
 				}
-				document.getElementsByClassName("header_filter")[FilterIndex].style.left = (IndexDynamic - IndexLeftStep) + "px";
-				IndexDynamic -= IndexLeftStep;
+				document.getElementsByClassName("header_filter")[FilterIndex].style.left = (IndexDynamic - Math.pow((SlideIndexLeftCount / 50), 2) + ((SlideIndexLeftCount / 50) * (IndexFinal - IndexDynamic))) + "px";
+				IndexDynamic += IndexLeftStep;
+				SlideIndexLeftCount += 1;
 			}, 10);
 		}
 		else {
-			var IndexRightStep = ((IndexFinal - IndexDynamic) / 25);
+			var SlideIndexRightCount = 0;
 			var SlideIndexRightInterval = setInterval(function () {
-				if (IndexDynamic >= IndexFinal) {
+				var IndexRightStep = ((IndexFinal - IndexDynamic) / 25);
+				if (parseInt(document.getElementsByClassName("header_filter")[FilterIndex].style.left, 10) >= IndexFinal) {
 					clearInterval(SlideIndexRightInterval);
 				}
-				document.getElementsByClassName("header_filter")[FilterIndex].style.left = (IndexDynamic + IndexRightStep) + "px";
+				document.getElementsByClassName("header_filter")[FilterIndex].style.left = (IndexDynamic - Math.pow((SlideIndexRightCount / 50), 2) + ((SlideIndexRightCount / 50) * (IndexFinal - IndexDynamic))) + "px";
 				IndexDynamic += IndexRightStep;
-				console.log(IndexDynamic);
+				SlideIndexRightCount += 1;
 			}, 10);
 		}
 	}
