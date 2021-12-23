@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Student Radar App</title>
+</head>
+<body>
+<header>
+	<a href="https://www.instagram.com/studar.app/" target="_blank" id="head_banner"><h1>Share the app with your friends to receive a special discount!</h1><span class="share_icon" id="share_icon_head_banner"></span></a>
+</header>
+<div id="deals_content" onscroll="DealsScroll()">
+	<div class="deal_item"><a href="Deals/Bondi.html">
+		<h1>30 free minutes on Bondi's E-bike</h1>
+		<span class="link_arrow"></span>
+		<h3>Get a Bondi E-bike and explore the city of The Hague with your friends!</h3>
+	</a></div>
+	<div class="deal_item"><a href="Deals/Angels_Kitchen.html">
+		<h1>A great Hamburger menu with 0,5L Beer!</h1>
+		<span class="link_arrow"></span>
+		<h3>Only at Angel's Kitchen!</h3>
+	</a></div>
+	<div class="deal_item"><a href="Deals/Het_Kabinet.html">
+		<h1>A giant schnitzel and a weissenbeer!</h1>
+		<span class="link_arrow"></span>
+		<h3>Available to order tonight at restaurant Het Kabinet!</h3>
+	</a></div>
+	<div class="deal_item"><a href="Deals/Acer.html">
+		<h1>15% discount on Study Laptops</h1>
+		<span class="link_arrow"></span>
+		<h3>Get your student discount from Acer to buy a school laptop for the new year!</h3>
+	</a></div>
+</div>
+<div id="deals_overflow_top"></div>
+<div id="deals_overflow_bottom"></div>
+<footer>
+	<a href="Agenda.html" class="footer_icon" style="background: url('src/agenda_off.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6>Agenda</h6></a>
+	<a href="#" class="footer_icon" style="background: url('src/deals_selected.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6 style="color:#f9b3ff;">Deals</h6></a>
+	<a href="Match.html" class="footer_icon" style="background: url('src/matching_off.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6>Matching</h6></a>
+	<a href="Map.html" class="footer_icon" style="background: url('src/map_off.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6>Map</h6></a>
+	<a href="Info.html" class="footer_icon" style="background: url('src/info_off.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6>Info</h6></a>
+</footer>
+<style>
+	body {
+		background: black;
+		font-family: Arial;
+	}
+	header {
+		width: 100%;
+		height: 130px;
+		background: black;
+		position: fixed;
+		z-index: 1;
+		top: 0px;
+		left: 0px;
+	}
+	#head_banner {
+		width: 100%;
+		height: 130px;
+		background: #a6ffec;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	#head_banner h1 {
+		width: calc(100% - 200px);
+		font-size: 42px;
+		margin: 0px;
+		color: black;
+		text-decoration: none;
+		position: absolute;
+		top: 15px;
+		left: 50px;
+	}
+	#share_icon_head_banner {
+		width: 80px;
+		height: 130px;
+		background: url("src/share_black.png");
+		background-size: 100% auto;
+		background-position: center;
+		background-repeat: no-repeat;
+		position: absolute;
+		top: 0px;
+		right: 50px;
+	}
+	#deals_content {
+		width: 100%;
+		height: calc(100% - 310px);
+		overflow-x: hidden;
+		overflow-y: auto;
+		position: absolute;
+		top: 130px;
+		left: 0px;
+	}
+	#deals_overflow_top {
+		width: 100%;
+		height: 240px;
+		opacity: 0;
+		background: linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,1));
+		pointer-events: none;
+		position: fixed;
+		top: 130px;
+		left: 0px;
+	}
+	#deals_overflow_bottom {
+		width: 100%;
+		height: 240px;
+		opacity: 1;
+		background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,1));
+		pointer-events: none;
+		position: fixed;
+		bottom: 180px;
+		left: 0px;
+	}
+	.deal_item {
+		width: calc(100% - 80px);
+		border-bottom: 5px solid white;
+		position: relative;
+		left: 40px;
+	}
+	.deal_item a {
+		text-decoration: none;
+	}
+	.deal_item h1 {
+		width: 100%;
+		font-size: 96px;
+		margin: 0px;
+		color: #fab3ff;
+		padding: 50px 0px 0px 0px;
+		position: relative;
+		top: 0px;
+		left: 0px;
+	}
+	.deal_item h3 {
+		width: calc(100% - 140px);
+		font-size: 36px;
+		font-weight: 100;
+		line-height: 1.3;
+		margin: 0px;
+		color: white;
+		padding: 50px 0px 50px 0px;
+		position: relative;
+		top: 0px;
+		left: 0px;
+	}
+	.link_arrow {
+		width: 110px;
+		height: 150px;
+		background: url("src/link_arrow_pink.png");
+		background-size: 100% auto;
+		background-position: center;
+		background-repeat: no-repeat;
+		position: relative;
+		float: right;
+		top: 20px;
+		right: 10px;
+	}
+	footer {
+		width: 100%;
+		height: 180px;
+		background: black;
+		position: fixed;
+		bottom: 0px;
+		left: 0px;
+	}
+	.footer_icon {
+		display: inline-block;
+		width: calc(20% - 10px);
+		height: 180px;
+		margin: 0px 3px;
+		text-decoration: none;
+	}
+	.footer_icon h6 {
+		width: 100%;
+		margin: 0px;
+		font-size: 36px;
+		color: white;
+		text-decoration: none;
+		text-align: center;
+		position: relative;
+		top: 115px;
+	}
+</style>
+<script>
+	function DealsScroll() {
+		document.getElementById("deals_overflow_top").style.opacity = (Number(document.getElementById("deals_content").scrollTop) / 50);
+		document.getElementById("deals_overflow_bottom").style.opacity = ((Number(document.getElementById("deals_content").scrollHeight) - document.getElementById("deals_content").clientHeight - Number(document.getElementById("deals_content").scrollTop)) / 50);
+	}
+</script>
+</body></html>

@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Student Radar App</title>
+</head>
+<body>
+<header>
+	<a href="Deals.html" id="head_banner"><h1>See how you can get discounts!</h1><span class="link_arrow" id="link_arrow_head_banner"></span></a>
+	<input type="search" placeholder="Which event do you want to go to?" id="header_search" />
+	<button id="header_confirm_search"></button>
+	<button id="search_filter_button"></button>
+	<div id="header_filters_box" onscroll="FilterScroll()">
+		<span class="header_filter">Hi The Hague</span>
+		<span class="header_filter">Party</span>
+		<span class="header_filter">Food & Drinks</span>
+		<span class="header_filter">Sightseeing & Attractions</span>
+		<span class="header_filter">Sport & Games</span>
+		<span class="header_filter">Workshops & Seminars</span>
+		<span class="header_filter">Art & Culture</span>
+		<span class="header_filter">Other</span>
+	</div>
+	<div id="header_filter_overflow_left"></div>
+	<div id="header_filter_overflow_right"></div>
+</header>
+<div id="agenda_content" onscroll="AgendaScroll()">
+	<div class="agenda_month">December 2021</div>
+	<div class="agenda_item_2">
+		<div class="agenda_date_2">
+			<h3>TUE</h3>
+			<h2>21</h2>
+		</div>
+		<div class="agenda_desc_2">
+			<a href="Agenda/Dec_21_CGN.html">Christmas Game Night - THUAS Students</a>
+			<h5>20:00</h5>
+			<h6><span class="location_pin_icon"></span> Online</h6>
+		</div>
+	</div>
+	<div class="agenda_item_2">
+		<div class="agenda_date_2">
+			<h3>MON</h3>
+			<h2>27</h2>
+		</div>
+		<div class="agenda_desc_2">
+			<a href="Agenda/Dec_27_CCT.html">Christmas City Tour (27-30 DEC)</a>
+			<h5>12:00 - 17:00</h5>
+			<h6><span class="location_pin_icon"></span> The Hague City</h6>
+		</div>
+	</div>
+	<div class="agenda_item_2">
+		<div class="agenda_date_2">
+			<h3>MON</h3>
+			<h2>27</h2>
+		</div>
+		<div class="agenda_desc_2">
+			<a href="Agenda/Dec_27_WPIO.html">Winter Program The Hague Inside Out</a>
+			<h5><span class="location_pin_icon"></span> Online</h5>
+		</div>
+	</div>
+	<div class="agenda_item_2">
+		<div class="agenda_date_2">
+			<h3>TUE</h3>
+			<h2>28</h2>
+		</div>
+		<div class="agenda_desc_2">
+			<a href="Agenda/Dec_28_CCT.html">Christmas City Tour (27-30 DEC)</a>
+			<h5>12:00 - 17:00</h5>
+			<h6><span class="location_pin_icon"></span> The Hague City</h6>
+		</div>
+	</div>
+	<div class="agenda_item_2">
+		<div class="agenda_date_2">
+			<h3>WED</h3>
+			<h2>29</h2>
+		</div>
+		<div class="agenda_desc_2">
+			<a href="Agenda/Dec_29_CCT.html">Christmas City Tour (27-30 DEC)</a>
+			<h5>12:00 - 17:00</h5>
+			<h6><span class="location_pin_icon"></span> The Hague City</h6>
+		</div>
+	</div>
+	<div class="agenda_item_2">
+		<div class="agenda_date_2">
+			<h3>THU</h3>
+			<h2>30</h2>
+		</div>
+		<div class="agenda_desc_2">
+			<a href="Agenda/Dec_30_CCT.html">Christmas City Tour (27-30 DEC)</a>
+			<h5>12:00 - 17:00</h5>
+			<h6><span class="location_pin_icon"></span> The Hague City</h6>
+		</div>
+	</div>
+	<div class="agenda_month">January 2022</div>
+	<div class="agenda_item_1">
+		<div class="agenda_date_1">
+			<h3>SAT</h3>
+			<h2>15</h2>
+		</div>
+		<div class="agenda_desc_1">
+			<a href="Agenda/Jan_15_B.html">Batavierenrace</a>
+			<h5><span class="location_pin_icon"></span> Online</h5>
+		</div>
+	</div>
+	<div class="agenda_item_1">
+		<div class="agenda_date_1">
+			<h3>TUE</h3>
+			<h2>25</h2>
+		</div>
+		<div class="agenda_desc_1">
+			<a href="Agenda/Jan_25_SDJC.html">Student DJ Contest</a>
+			<h5><span class="location_pin_icon"></span> Online</h5>
+		</div>
+	</div>
+</div>
+<div id="agenda_overflow_top"></div>
+<div id="agenda_overflow_bottom"></div>
+<footer>
+	<a href="#" class="footer_icon" style="background: url('src/agenda_selected.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6 style="color:#a1f8d7;">Agenda</h6></a>
+	<a href="Deals.html" class="footer_icon" style="background: url('src/deals_off.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6>Deals</h6></a>
+	<a href="Match.html" class="footer_icon" style="background: url('src/matching_off.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6>Matching</h6></a>
+	<a href="Map.html" class="footer_icon" style="background: url('src/map_off.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6>Map</h6></a>
+	<a href="Info.html" class="footer_icon" style="background: url('src/info_off.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6>Info</h6></a>
+</footer>
+<style>
+	body {
+		background: black;
+		font-family: Arial;
+	}
+	input[type="search"]::-webkit-search-cancel-button {
+		display: none;
+	}
+	header {
+		width: 100%;
+		height: 430px;
+		background: black;
+		position: fixed;
+		z-index: 1;
+		top: 0px;
+		left: 0px;
+	}
+	#head_banner {
+		width: 100%;
+		height: 130px;
+		background: #ffb9ff;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	#head_banner h1 {
+		width: calc(100% - 200px);
+		font-size: 48px;
+		margin: 0px;
+		color: black;
+		text-decoration: none;
+		position: absolute;
+		top: 35px;
+		left: 50px;
+	}
+	#link_arrow_head_banner {
+		width: 80px;
+		height: 130px;
+		background: url("src/link_arrow_black.png");
+		background-size: 100% auto;
+		background-position: center;
+		background-repeat: no-repeat;
+		position: absolute;
+		top: 0px;
+		right: 50px;
+	}
+	#header_search {
+		width: calc(100% - 150px);
+		outline: none;
+		border: 1px solid grey;
+		border-radius: 50px;
+		padding: 20px 100px 20px 40px;
+		font-size: 42px;
+		position: absolute;
+		top: 170px;
+		left: 20px;
+	}
+	#header_confirm_search {
+		width: 110px;
+		height: 90px;
+		background: url("src/search_black.png");
+		background-size: auto calc(100% - 20px);
+		background-position: center;
+		background-repeat: no-repeat;
+		border: none;
+		outline: none;
+		position: absolute;
+		top: 170px;
+		right: 130px;
+	}
+	#search_filter_button {
+		width: 90px;
+		height: 90px;
+		background: url("src/filters.png");
+		background-size: 100% auto;
+		background-position: center;
+		border: none;
+		outline: none;
+		position: absolute;
+		top: 170px;
+		right: 20px;
+	}
+	#header_filters_box {
+		overflow-x: auto;
+		overflow-y: hidden;
+		width: calc(100% - 40px);
+		height: 90px;
+		white-space: nowrap;
+		position: absolute;
+		top: 300px;
+		left: 20px;
+	}
+	.header_filter {
+		display: inline;
+		font-size: 36px;
+		background: #2c41e5;
+		padding: 15px 40px;
+		margin-left: 10px;
+		border-radius: 50px;
+		color: white;
+		position: relative;
+		top: 20px;
+		left: -10px;
+	}
+	#header_filters_box::-webkit-scrollbar {
+		display: none;
+	}
+	#header_filter_overflow_left {
+		width: 120px;
+		height: 90px;
+		opacity: 0;
+		background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,1));
+		pointer-events: none;
+		position: absolute;
+		top: 300px;
+		left: 15px;
+	}
+	#header_filter_overflow_right {
+		width: 120px;
+		height: 90px;
+		background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1));
+		pointer-events: none;
+		position: absolute;
+		top: 300px;
+		right: 15px;
+	}
+	#agenda_content {
+		width: 100%;
+		height: calc(100% - 600px);
+		overflow-x: hidden;
+		overflow-y: auto;
+		position: absolute;
+		top: 430px;
+		left: 0px;
+	}
+	#agenda_overflow_top {
+		width: 100%;
+		height: 240px;
+		opacity: 0;
+		background: linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,1));
+		pointer-events: none;
+		position: fixed;
+		top: 428px;
+		left: 0px;
+	}
+	#agenda_overflow_bottom {
+		width: 100%;
+		height: 240px;
+		opacity: 1;
+		background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,1));
+		pointer-events: none;
+		position: fixed;
+		bottom: 180px;
+		left: 0px;
+	}
+	.agenda_month {
+		width: calc(100% - 100px);
+		font-size: 72px;
+		color: #89ffe0;
+		margin: 20px 0px 40px 0px;
+		position: relative;
+		left: 50px;
+	}
+	.agenda_item_1, .agenda_item_2 {
+		width: 100%;
+		position: relative;
+	}
+	.agenda_item_1 {
+		height: 288px;
+	}
+	.agenda_item_2 {
+		height: 360px;
+	}
+	.agenda_date_1, .agenda_date_2 {
+		width: 100%;
+		color: white;
+		position: relative;
+		left: 50px;
+	}
+	.agenda_date_1 {
+		top: 30px;
+	}
+	.agenda_date_2 {
+		top: 60px;
+	}
+	.agenda_date_1 h3, .agenda_date_2 h3 {
+		font-size: 48px;
+		font-weight: 100;
+		margin: 0px;
+	}
+	.agenda_date_1 h2, .agenda_date_2 h2 {
+		font-size: 84px;
+		margin: 0px;
+	}
+	.agenda_desc_1, .agenda_desc_2 {
+		width: calc(100% - 250px);
+		border-bottom: 4px solid white;
+		position: relative;
+		top: -150px;
+		left: 230px;
+	}
+	.agenda_desc_1 {
+		height: 218px;
+	}
+	.agenda_desc_2 {
+		height: 290px;
+	}
+	.agenda_desc_1 a, .agenda_desc_2 a {
+		font-size: 54px;
+		line-height: 1.2;
+		color: white;
+		text-decoration: none;
+		margin: 0px;
+	}
+	.agenda_desc_1 h5, .agenda_desc_2 h5 {
+		font-size: 42px;
+		font-weight: 100;
+		color: white;
+		margin: 0px;
+		position: relative;
+		top: 30px;
+	}
+	.agenda_desc_1 h6, .agenda_desc_2 h6 {
+		font-size: 42px;
+		font-weight: 100;
+		color: white;
+		margin: 0px;
+		position: relative;
+		top: -25px;
+		left: 300px;
+	}
+	.location_pin_icon {
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		background: url('src/pin_icon.png');
+		background-size: 100%;
+		background-position: center;
+		position: relative;
+		top: 12px;
+	}
+	footer {
+		width: 100%;
+		height: 180px;
+		background: black;
+		position: fixed;
+		bottom: 0px;
+		left: 0px;
+	}
+	.footer_icon {
+		display: inline-block;
+		width: calc(20% - 10px);
+		height: 180px;
+		margin: 0px 3px;
+		text-decoration:none;
+	}
+	.footer_icon h6 {
+		width: 100%;
+		margin: 0px;
+		font-size: 36px;
+		color: white;
+		text-decoration: none;
+		text-align: center;
+		position: relative;
+		top: 115px;
+	}
+</style>
+<script>
+	function FilterScroll() {
+		document.getElementById("header_filter_overflow_left").style.opacity = (Number(document.getElementById("header_filters_box").scrollLeft) / 20);
+		document.getElementById("header_filter_overflow_right").style.opacity = ((Number(document.getElementById("header_filters_box").scrollWidth) - document.getElementById("header_filters_box").clientWidth - Number(document.getElementById("header_filters_box").scrollLeft)) / 20);
+	}
+	function AgendaScroll() {
+		document.getElementById("agenda_overflow_top").style.opacity = (Number(document.getElementById("agenda_content").scrollTop) / 50);
+		document.getElementById("agenda_overflow_bottom").style.opacity = ((Number(document.getElementById("agenda_content").scrollHeight) - document.getElementById("agenda_content").clientHeight - Number(document.getElementById("agenda_content").scrollTop)) / 50);
+	}
+</script>
+</body></html>
