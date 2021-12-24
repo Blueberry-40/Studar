@@ -11,7 +11,9 @@
 		<div id="header_filter_overflow_left"></div>
 		<div id="header_filter_overflow_right"></div>
 	</header>
-<div id="agenda_content" onscroll="AgendaScroll()"></div>
+<div id="agenda_content" onscroll="AgendaScroll()">
+	<div id="agenda_frame"></div>
+</div>
 <div id="agenda_overflow_top"></div>
 <div id="agenda_overflow_bottom"></div>
 <footer>
@@ -155,6 +157,13 @@
 		top: 430px;
 		left: 0px;
 	}
+	#agenda_frame {
+		width: 100%;
+		overflow: hidden;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
 	#agenda_overflow_top {
 		width: 100%;
 		height: 240px;
@@ -177,6 +186,7 @@
 	}
 	.agenda_month {
 		width: calc(100% - 100px);
+		height: 80px;
 		font-size: 72px;
 		color: #89ffe0;
 		margin: 20px 0px 40px 0px;
@@ -574,20 +584,20 @@
 	var AgendaContent = document.getElementById("agenda_content");
 	var AgendaDateCnt = [];
 	var AgendaContentList = [
-		["MON", 27, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], true],
-		["MON", 27, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], true],
-		["TUE", 28, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], true],
-		["TUE", 28, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], true],
-		["WED", 29, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], true],
-		["WED", 29, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], true],
-		["THU", 30, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], true],
-		["THU", 30, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], true],
-		["FRI", 31, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], true],
-		["SAT", 15, 01, 2022, "Batavierenrace", "", "Online", ["Sport & Games"], true],
-		["TUE", 25, 01, 2022, "Student DJ Contest", "", "Online", ["Other"], true]
+		["MON", 27, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
+		["MON", 27, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["TUE", 28, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
+		["TUE", 28, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["WED", 29, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
+		["WED", 29, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["THU", 30, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
+		["THU", 30, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["FRI", 31, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["SAT", 15, 01, 2022, "Batavierenrace", "", "Online", ["Sport & Games"]],
+		["TUE", 25, 01, 2022, "Student DJ Contest", "", "Online", ["Other"]]
 	];
 	var FiltersContentList = [];
-	var AgendaMonthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+	var AgendaMonthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var AgendaContentHTML = "";
 	var TagsContainOther = false;
 	for (var i = 0; i < AgendaContentList.length; i++) {
@@ -620,7 +630,7 @@
 	if (TagsContainOther) {
 		header_filters_box.innerHTML = header_filters_box.innerHTML + "<span class=\"header_filter\" onclick=\"FilterAgenda(\'Other\', " + FiltersContentList.length + ")\">Other</span>";
 	}
-	AgendaContent.innerHTML = AgendaContentHTML;
+	document.getElementById("agenda_frame").innerHTML = AgendaContentHTML;
 	for (var i = 0; i < document.getElementsByClassName("agenda_desc").length; i++) {
 		document.getElementsByClassName("agenda_item")[i].style.height = (Number(document.getElementsByClassName("agenda_desc")[i].getElementsByTagName("a")[0].offsetHeight) + 235) + "px";
 		document.getElementsByClassName("agenda_desc")[i].style.height = (Number(document.getElementsByClassName("agenda_desc")[i].getElementsByTagName("a")[0].offsetHeight) + 170) + "px";
@@ -702,32 +712,36 @@
 		HFilterClass[FilterIndex].setAttribute("onclick", "NoFilterAgenda('" + FilterName + "', " + FilterIndex + ")");
 
 	// Filter agenda contents
+		var AgendaNewDateCnt = [];
+		var AgendaNewContentHTML = "";
 		for (var i = 0; i < AgendaContentList.length; i++) {
-			var AgendaItemKeep = false;
 			for (var t = 0; t < AgendaContentList[i][7].length; t++) {
-				if (AgendaContentList[i][7][t] == HFilterClass[FilterIndex].innerText) {
-					AgendaItemKeep = true;
-				}
-			}
-			if (AgendaItemKeep == false) {
-				document.getElementsByClassName("agenda_item")[i].style.opacity = 0;
-				AgendaContentList[i][8] = false;
-			}
-		}
-
-	// Hide agenda months
-		for (var i = 0; i < document.getElementsByClassName("agenda_month").length; i++) {
-			var MonthDVal = document.getElementsByClassName("agenda_month")[i].getAttribute("dval");
-			var RemoveMonthTF = true;
-			for (var a = 0; a < AgendaContentList.length; a++) {
-				if (AgendaContentList[a][2] + "_" + AgendaContentList[a][3] == MonthDVal && AgendaContentList[a][8] == true) {
-					RemoveMonthTF = false;
+				if (AgendaContentList[i][7][t] == FilterName) {
+					if (AgendaNewDateCnt.includes(AgendaContentList[i][2] + "_" + AgendaContentList[i][3]) == false) {
+						AgendaNewContentHTML += "<div class=\"agenda_month\" dval=\"" + AgendaContentList[i][2] + "_" + AgendaContentList[i][3] + "\">" + AgendaMonthNames[AgendaContentList[i][2] - 1] + " " + AgendaContentList[i][3] + "</div>";
+						AgendaNewDateCnt.push(AgendaContentList[i][2] + "_" + AgendaContentList[i][3]);
+					}
+					AgendaNewContentHTML += "<div class=\"agenda_item\" style=\"height:360px;\" tags=\"";
+					for (var t = 0; t < AgendaContentList[i][7].length; t++) {
+						AgendaNewContentHTML += AgendaContentList[i][7][t] + ",";
+					}
+					AgendaNewContentHTML += "\" dval=\"" + AgendaContentList[i][2] + "_" + AgendaContentList[i][3] + "\"><div class=\"agenda_date\"><h3>" + AgendaContentList[i][0] + "</h3><h2>" + AgendaContentList[i][1] + "</h2></div><div class=\"agenda_desc\"><a>" + AgendaContentList[i][4] + "</a>";
+					if (AgendaContentList[i][5] != "") {
+						AgendaNewContentHTML += "<h5>" + AgendaContentList[i][5] + "</h5><h6><span class=\"location_pin_icon\"></span> " + AgendaContentList[i][6] + "</h6>";
+					}
+					else {
+						AgendaNewContentHTML += "<h5><span class=\"location_pin_icon\"></span> " + AgendaContentList[i][6] + "</h5>";
+					}
 					break;
 				}
 			}
-			if (RemoveMonthTF) {
-				document.getElementsByClassName("agenda_month")[i].style.opacity = 0;
-			}
+			AgendaNewContentHTML += "</div></div>";
+		}
+		document.getElementById("agenda_frame").innerHTML = AgendaNewContentHTML;
+		for (var i = 0; i < document.getElementsByClassName("agenda_desc").length; i++) {
+			document.getElementsByClassName("agenda_item")[i].style.height = (Number(document.getElementsByClassName("agenda_desc")[i].getElementsByTagName("a")[0].offsetHeight) + 235) + "px";
+			document.getElementsByClassName("agenda_desc")[i].style.height = (Number(document.getElementsByClassName("agenda_desc")[i].getElementsByTagName("a")[0].offsetHeight) + 170) + "px";
+			document.getElementsByClassName("agenda_date")[i].style.top = ((Number(document.getElementsByClassName("agenda_desc")[i].offsetHeight) - 151) / 2) + "px";
 		}
 	}
 
@@ -791,15 +805,32 @@
 		}
 		HFilterClass[FilterIndex].setAttribute("onclick", "FilterAgenda('" + FilterName + "', " + FilterIndex + ")");
 
-	// Un-filter agenda contents
-		for (var i = 0; i < document.getElementsByClassName("agenda_item").length; i++) {
-			document.getElementsByClassName("agenda_item")[i].style.opacity = 1;
-			AgendaContentList[i][8] = 1;
+	// Show all agenda contents
+		var AgendaNewDateCnt = [];
+		var AgendaNewContentHTML = "";
+		for (var i = 0; i < AgendaContentList.length; i++) {
+			if (AgendaNewDateCnt.includes(AgendaContentList[i][2] + "_" + AgendaContentList[i][3]) == false) {
+				AgendaNewContentHTML += "<div class=\"agenda_month\" dval=\"" + AgendaContentList[i][2] + "_" + AgendaContentList[i][3] + "\">" + AgendaMonthNames[AgendaContentList[i][2] - 1] + " " + AgendaContentList[i][3] + "</div>";
+				AgendaNewDateCnt.push(AgendaContentList[i][2] + "_" + AgendaContentList[i][3]);
+			}
+			AgendaNewContentHTML += "<div class=\"agenda_item\" style=\"height:360px;\" tags=\"";
+			for (var t = 0; t < AgendaContentList[i][7].length; t++) {
+				AgendaNewContentHTML += AgendaContentList[i][7][t] + ",";
+			}
+			AgendaNewContentHTML += "\" dval=\"" + AgendaContentList[i][2] + "_" + AgendaContentList[i][3] + "\"><div class=\"agenda_date\"><h3>" + AgendaContentList[i][0] + "</h3><h2>" + AgendaContentList[i][1] + "</h2></div><div class=\"agenda_desc\"><a>" + AgendaContentList[i][4] + "</a>";
+			if (AgendaContentList[i][5] != "") {
+				AgendaNewContentHTML += "<h5>" + AgendaContentList[i][5] + "</h5><h6><span class=\"location_pin_icon\"></span> " + AgendaContentList[i][6] + "</h6>";
+			}
+			else {
+				AgendaNewContentHTML += "<h5><span class=\"location_pin_icon\"></span> " + AgendaContentList[i][6] + "</h5>";
+			}
+			AgendaNewContentHTML += "</div></div>";
 		}
-
-	// Show agenda months
-		for (var i = 0; i < document.getElementsByClassName("agenda_month").length; i++) {
-			document.getElementsByClassName("agenda_month")[i].style.opacity = 1;
+		document.getElementById("agenda_frame").innerHTML = AgendaNewContentHTML;
+		for (var i = 0; i < document.getElementsByClassName("agenda_desc").length; i++) {
+			document.getElementsByClassName("agenda_item")[i].style.height = (Number(document.getElementsByClassName("agenda_desc")[i].getElementsByTagName("a")[0].offsetHeight) + 235) + "px";
+			document.getElementsByClassName("agenda_desc")[i].style.height = (Number(document.getElementsByClassName("agenda_desc")[i].getElementsByTagName("a")[0].offsetHeight) + 170) + "px";
+			document.getElementsByClassName("agenda_date")[i].style.top = ((Number(document.getElementsByClassName("agenda_desc")[i].offsetHeight) - 151) / 2) + "px";
 		}
 	}
 </script>
