@@ -183,76 +183,9 @@
 		position: relative;
 		left: 50px;
 	}
-	/*.agenda_item_1, .agenda_item_2 {
-		width: 100%;
-		position: relative;
-	}
-	.agenda_item_1 {
-		height: 288px;
-	}
-	.agenda_item_2 {
-		height: 360px;
-	}
-	.agenda_date_1, .agenda_date_2 {
-		width: 100%;
-		color: white;
-		position: relative;
-		left: 50px;
-	}
-	.agenda_date_1 {
-		top: 30px;
-	}
-	.agenda_date_2 {
-		top: 60px;
-	}
-	.agenda_date_1 h3, .agenda_date_2 h3 {
-		font-size: 48px;
-		font-weight: 100;
-		margin: 0px;
-	}
-	.agenda_date_1 h2, .agenda_date_2 h2 {
-		font-size: 84px;
-		margin: 0px;
-	}
-	.agenda_desc_1, .agenda_desc_2 {
-		width: calc(100% - 250px);
-		border-bottom: 4px solid white;
-		position: relative;
-		top: -150px;
-		left: 230px;
-	}
-	.agenda_desc_1 {
-		height: 218px;
-	}
-	.agenda_desc_2 {
-		height: 290px;
-	}
-	.agenda_desc_1 a, .agenda_desc_2 a {
-		font-size: 54px;
-		line-height: 1.2;
-		color: white;
-		text-decoration: none;
-		margin: 0px;
-	}
-	.agenda_desc_1 h5, .agenda_desc_2 h5 {
-		font-size: 42px;
-		font-weight: 100;
-		color: white;
-		margin: 0px;
-		position: relative;
-		top: 30px;
-	}
-	.agenda_desc_1 h6, .agenda_desc_2 h6 {
-		font-size: 42px;
-		font-weight: 100;
-		color: white;
-		margin: 0px;
-		position: relative;
-		top: -25px;
-		left: 300px;
-	}*/
 	.agenda_item {
 		width: 100%;
+		opacity: 1;
 		position: relative;
 	}
 	.agenda_date {
@@ -596,6 +529,7 @@
 	}
 </style>
 <script>
+// Anti-piracy
 	document.getElementById("RequireJavaScript").style.display = "none";
 	if ((window.outerHeight / window.outerWidth) >= 1) {
 		document.getElementById("OnlyMobile").style.display = "none";
@@ -635,20 +569,22 @@
 		// Alt + Enter
 		if (event.altKey && event.keyCode == 13 || event.altKey && event.which == 13) { event.preventDefault(); }
 	});
+
+// Dynamic agenda and filters
 	var AgendaContent = document.getElementById("agenda_content");
 	var AgendaDateCnt = [];
 	var AgendaContentList = [
-		["MON", 27, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
-		["MON", 27, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
-		["TUE", 28, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
-		["TUE", 28, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
-		["WED", 29, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
-		["WED", 29, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
-		["THU", 30, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
-		["THU", 30, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
-		["FRI", 31, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
-		["SAT", 15, 01, 2022, "Batavierenrace", "", "Online", ["Sport & Games"]],
-		["TUE", 25, 01, 2022, "Student DJ Contest", "", "Online", ["Other"]]
+		["MON", 27, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], true],
+		["MON", 27, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], true],
+		["TUE", 28, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], true],
+		["TUE", 28, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], true],
+		["WED", 29, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], true],
+		["WED", 29, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], true],
+		["THU", 30, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], true],
+		["THU", 30, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], true],
+		["FRI", 31, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], true],
+		["SAT", 15, 01, 2022, "Batavierenrace", "", "Online", ["Sport & Games"], true],
+		["TUE", 25, 01, 2022, "Student DJ Contest", "", "Online", ["Other"], true]
 	];
 	var FiltersContentList = [];
 	var AgendaMonthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -690,15 +626,22 @@
 		document.getElementsByClassName("agenda_desc")[i].style.height = (Number(document.getElementsByClassName("agenda_desc")[i].getElementsByTagName("a")[0].offsetHeight) + 170) + "px";
 		document.getElementsByClassName("agenda_date")[i].style.top = ((Number(document.getElementsByClassName("agenda_desc")[i].offsetHeight) - 151) / 2) + "px";
 	}
+
+// Filter scroll fade
 	function FilterScroll() {
 		document.getElementById("header_filter_overflow_left").style.opacity = Math.min((Number(document.getElementById("header_filters_box").scrollLeft) / 20), 1);
 		document.getElementById("header_filter_overflow_right").style.opacity = Math.min(((Number(document.getElementById("header_filters_box").scrollWidth) - document.getElementById("header_filters_box").clientWidth - Number(document.getElementById("header_filters_box").scrollLeft)) / 20), 1);
 	}
+
+// Agenda scroll fade
 	function AgendaScroll() {
 		document.getElementById("agenda_overflow_top").style.opacity = Math.min((Number(document.getElementById("agenda_content").scrollTop) / 50), 1);
 		document.getElementById("agenda_overflow_bottom").style.opacity = Math.min(((Number(document.getElementById("agenda_content").scrollHeight) - document.getElementById("agenda_content").clientHeight - Number(document.getElementById("agenda_content").scrollTop)) / 50), 1);
 	}
+
+// Filter agenda
 	function FilterAgenda(FilterName, FilterIndex) {
+	// Animations
 		var HFilterClass = document.getElementsByClassName("header_filter");
 		document.getElementById("header_filters_box").style.overflowX = "hidden";
 		var IndexAbsLeft = 0;
@@ -757,8 +700,40 @@
 			}, 10);
 		}
 		HFilterClass[FilterIndex].setAttribute("onclick", "NoFilterAgenda('" + FilterName + "', " + FilterIndex + ")");
+
+	// Filter agenda contents
+		for (var i = 0; i < AgendaContentList.length; i++) {
+			var AgendaItemKeep = false;
+			for (var t = 0; t < AgendaContentList[i][7].length; t++) {
+				if (AgendaContentList[i][7][t] == HFilterClass[FilterIndex].innerText) {
+					AgendaItemKeep = true;
+				}
+			}
+			if (AgendaItemKeep == false) {
+				document.getElementsByClassName("agenda_item")[i].style.opacity = 0;
+				AgendaContentList[i][8] = false;
+			}
+		}
+
+	// Hide agenda months
+		for (var i = 0; i < document.getElementsByClassName("agenda_month").length; i++) {
+			var MonthDVal = document.getElementsByClassName("agenda_month")[i].getAttribute("dval");
+			var RemoveMonthTF = true;
+			for (var a = 0; a < AgendaContentList.length; a++) {
+				if (AgendaContentList[a][2] + "_" + AgendaContentList[a][3] == MonthDVal && AgendaContentList[a][8] == true) {
+					RemoveMonthTF = false;
+					break;
+				}
+			}
+			if (RemoveMonthTF) {
+				document.getElementsByClassName("agenda_month")[i].style.opacity = 0;
+			}
+		}
 	}
+
+// Remove agenda filters
 	function NoFilterAgenda(FilterName, FilterIndex) {
+	// Animations
 		var HFilterClass = document.getElementsByClassName("header_filter");
 		for (var i = (FilterIndex - 1); i >= 0; i--) {
 			HFilterClass[i].style.webkitAnimation = "0.5s ease ShowFiltersLeft 1";
@@ -815,6 +790,17 @@
 			}, 10);
 		}
 		HFilterClass[FilterIndex].setAttribute("onclick", "FilterAgenda('" + FilterName + "', " + FilterIndex + ")");
+
+	// Un-filter agenda contents
+		for (var i = 0; i < document.getElementsByClassName("agenda_item").length; i++) {
+			document.getElementsByClassName("agenda_item")[i].style.opacity = 1;
+			AgendaContentList[i][8] = 1;
+		}
+
+	// Show agenda months
+		for (var i = 0; i < document.getElementsByClassName("agenda_month").length; i++) {
+			document.getElementsByClassName("agenda_month")[i].style.opacity = 1;
+		}
 	}
 </script>
 </body></html>
