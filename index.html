@@ -509,6 +509,41 @@
 	if ((window.outerHeight / window.outerWidth) >= 1) {
 		document.getElementById("OnlyMobile").style.display = "none";
 	}
+	//document.body.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+	document.body.addEventListener("keydown", function (event) {
+		// F12
+		if (event.keyCode == 123 || event.which == 123) { event.preventDefault(); }
+		// Ctrl + I
+		if (event.ctrlKey && event.keyCode == 73 || event.ctrlKey && event.which == 73) { event.preventDefault(); }
+		// Ctrl + P
+		if (event.ctrlKey && event.keyCode == 80 || event.ctrlKey && event.which == 80) { event.preventDefault(); }
+		// Ctrl + S
+		if (event.ctrlKey && event.keyCode == 83 || event.ctrlKey && event.which == 83) { event.preventDefault(); }
+		// Ctrl + U
+		if (event.ctrlKey && event.keyCode == 85 || event.ctrlKey && event.which == 85) { event.preventDefault(); }
+		// Ctrl + Shift + C
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 67 || event.ctrlKey && event.shiftKey && event.which == 67) { event.preventDefault(); }
+		// Ctrl + Shift + E
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 69 || event.ctrlKey && event.shiftKey && event.which == 69) { event.preventDefault(); }
+		// Ctrl + Shift + I
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 73 || event.ctrlKey && event.shiftKey && event.which == 73) { event.preventDefault(); }
+		// Ctrl + Shift + J
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 74 || event.ctrlKey && event.shiftKey && event.which == 74) { event.preventDefault(); }
+		// Ctrl + Shift + K
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 75 || event.ctrlKey && event.shiftKey && event.which == 75) { event.preventDefault(); }
+		// Ctrl + Shift + M
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 77 || event.ctrlKey && event.shiftKey && event.which == 77) { event.preventDefault(); }
+		// Ctrl + Shift + S
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 83 || event.ctrlKey && event.shiftKey && event.which == 83) { event.preventDefault(); }
+		// Shift + F7
+		if (event.shiftKey && event.keyCode == 118 || event.shiftKey && event.which == 118) { event.preventDefault(); }
+		// Shift + F5
+		if (event.shiftKey && event.keyCode == 116 || event.shiftKey && event.which == 116) { event.preventDefault(); }
+		// Shift + F10
+		if (event.shiftKey && event.keyCode == 121 || event.shiftKey && event.which == 121) { event.preventDefault(); }
+		// Alt + Enter
+		if (event.altKey && event.keyCode == 13 || event.altKey && event.which == 13) { event.preventDefault(); }
+	});
 	function FilterScroll() {
 		document.getElementById("header_filter_overflow_left").style.opacity = Math.min((Number(document.getElementById("header_filters_box").scrollLeft) / 20), 1);
 		document.getElementById("header_filter_overflow_right").style.opacity = Math.min(((Number(document.getElementById("header_filters_box").scrollWidth) - document.getElementById("header_filters_box").clientWidth - Number(document.getElementById("header_filters_box").scrollLeft)) / 20), 1);

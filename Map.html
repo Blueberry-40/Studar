@@ -14,12 +14,13 @@
 	<a href="Info.html" class="footer_icon" style="background: url('src/info_off.png');background-size: 80px auto;background-position: center 20px;background-repeat:no-repeat;"><h6>Info</h6></a>
 </footer>
 <button id="OnlyMobile">This page can only be accessed on a mobile device.</button>
+<button id="RequireJavaScript">This page requires JavaScript to function. Please enable Javascript.</button>
 <style>
 	body {
 		background: black;
 		font-family: Arial;
 	}
-	#OnlyMobile {
+	#OnlyMobile, #RequireJavaScript {
 		width: 100%;
 		height: 100%;
 		background: black;
@@ -27,6 +28,7 @@
 		outline: none;
 		color: white;
 		font-size: 72px;
+		line-height: 1.4;
 		text-align: center;
 		padding: 0px 10%;
 		position: fixed;
@@ -86,8 +88,44 @@
 	}
 </style>
 <script>
+	document.getElementById("RequireJavaScript").style.display = "none";
 	if ((window.outerHeight / window.outerWidth) >= 1) {
 		document.getElementById("OnlyMobile").style.display = "none";
 	}
+	//document.body.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+	document.body.addEventListener("keydown", function (event) {
+		// F12
+		if (event.keyCode == 123 || event.which == 123) { event.preventDefault(); }
+		// Ctrl + I
+		if (event.ctrlKey && event.keyCode == 73 || event.ctrlKey && event.which == 73) { event.preventDefault(); }
+		// Ctrl + P
+		if (event.ctrlKey && event.keyCode == 80 || event.ctrlKey && event.which == 80) { event.preventDefault(); }
+		// Ctrl + S
+		if (event.ctrlKey && event.keyCode == 83 || event.ctrlKey && event.which == 83) { event.preventDefault(); }
+		// Ctrl + U
+		if (event.ctrlKey && event.keyCode == 85 || event.ctrlKey && event.which == 85) { event.preventDefault(); }
+		// Ctrl + Shift + C
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 67 || event.ctrlKey && event.shiftKey && event.which == 67) { event.preventDefault(); }
+		// Ctrl + Shift + E
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 69 || event.ctrlKey && event.shiftKey && event.which == 69) { event.preventDefault(); }
+		// Ctrl + Shift + I
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 73 || event.ctrlKey && event.shiftKey && event.which == 73) { event.preventDefault(); }
+		// Ctrl + Shift + J
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 74 || event.ctrlKey && event.shiftKey && event.which == 74) { event.preventDefault(); }
+		// Ctrl + Shift + K
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 75 || event.ctrlKey && event.shiftKey && event.which == 75) { event.preventDefault(); }
+		// Ctrl + Shift + M
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 77 || event.ctrlKey && event.shiftKey && event.which == 77) { event.preventDefault(); }
+		// Ctrl + Shift + S
+		if (event.ctrlKey && event.shiftKey && event.keyCode == 83 || event.ctrlKey && event.shiftKey && event.which == 83) { event.preventDefault(); }
+		// Shift + F7
+		if (event.shiftKey && event.keyCode == 118 || event.shiftKey && event.which == 118) { event.preventDefault(); }
+		// Shift + F5
+		if (event.shiftKey && event.keyCode == 116 || event.shiftKey && event.which == 116) { event.preventDefault(); }
+		// Shift + F10
+		if (event.shiftKey && event.keyCode == 121 || event.shiftKey && event.which == 121) { event.preventDefault(); }
+		// Alt + Enter
+		if (event.altKey && event.keyCode == 13 || event.altKey && event.which == 13) { event.preventDefault(); }
+	});
 </script>
 </body></html>
