@@ -7,108 +7,11 @@
 	<header>
 		<a href="Deals.html" id="head_banner"><h1>See how you can get discounts!</h1><span class="link_arrow" id="link_arrow_head_banner"></span></a>
 		<input type="search" placeholder="Which event do you want to go to?" id="header_search" />
-		<div id="header_filters_box" onscroll="FilterScroll()">
-			<span class="header_filter" onclick="FilterAgenda('HiTheHague', 0)">Hi The Hague</span>
-			<span class="header_filter" onclick="FilterAgenda('Party', 1)">Party</span>
-			<span class="header_filter" onclick="FilterAgenda('FoodDrinks', 2)">Food & Drinks</span>
-			<span class="header_filter" onclick="FilterAgenda('SightseeingAttractions', 3)">Sightseeing & Attractions</span>
-			<span class="header_filter" onclick="FilterAgenda('SportGames', 4)">Sport & Games</span>
-			<span class="header_filter" onclick="FilterAgenda('WorkshopsSeminars', 5)">Workshops & Seminars</span>
-			<span class="header_filter" onclick="FilterAgenda('ArtCulture', 6)">Art & Culture</span>
-			<span class="header_filter" onclick="FilterAgenda('Other', 7)">Other</span>
-		</div>
+		<div id="header_filters_box" onscroll="FilterScroll()"></div>
 		<div id="header_filter_overflow_left"></div>
 		<div id="header_filter_overflow_right"></div>
 	</header>
-<div id="agenda_content" onscroll="AgendaScroll()">
-	<div class="agenda_month">December 2021</div>
-	<div class="agenda_item_2">
-		<div class="agenda_date_2">
-			<h3>TUE</h3>
-			<h2>21</h2>
-		</div>
-		<div class="agenda_desc_2">
-			<a href="Agenda/Dec_21_CGN.html">Christmas Game Night - THUAS Students</a>
-			<h5>20:00</h5>
-			<h6><span class="location_pin_icon"></span> Online</h6>
-		</div>
-	</div>
-	<div class="agenda_item_2">
-		<div class="agenda_date_2">
-			<h3>MON</h3>
-			<h2>27</h2>
-		</div>
-		<div class="agenda_desc_2">
-			<a href="Agenda/Dec_27_CCT.html">Christmas City Tour (27-30 DEC)</a>
-			<h5>12:00 - 17:00</h5>
-			<h6><span class="location_pin_icon"></span> The Hague City</h6>
-		</div>
-	</div>
-	<div class="agenda_item_2">
-		<div class="agenda_date_2">
-			<h3>MON</h3>
-			<h2>27</h2>
-		</div>
-		<div class="agenda_desc_2">
-			<a href="Agenda/Dec_27_WPIO.html">Winter Program The Hague Inside Out</a>
-			<h5><span class="location_pin_icon"></span> Online</h5>
-		</div>
-	</div>
-	<div class="agenda_item_2">
-		<div class="agenda_date_2">
-			<h3>TUE</h3>
-			<h2>28</h2>
-		</div>
-		<div class="agenda_desc_2">
-			<a href="Agenda/Dec_28_CCT.html">Christmas City Tour (27-30 DEC)</a>
-			<h5>12:00 - 17:00</h5>
-			<h6><span class="location_pin_icon"></span> The Hague City</h6>
-		</div>
-	</div>
-	<div class="agenda_item_2">
-		<div class="agenda_date_2">
-			<h3>WED</h3>
-			<h2>29</h2>
-		</div>
-		<div class="agenda_desc_2">
-			<a href="Agenda/Dec_29_CCT.html">Christmas City Tour (27-30 DEC)</a>
-			<h5>12:00 - 17:00</h5>
-			<h6><span class="location_pin_icon"></span> The Hague City</h6>
-		</div>
-	</div>
-	<div class="agenda_item_2">
-		<div class="agenda_date_2">
-			<h3>THU</h3>
-			<h2>30</h2>
-		</div>
-		<div class="agenda_desc_2">
-			<a href="Agenda/Dec_30_CCT.html">Christmas City Tour (27-30 DEC)</a>
-			<h5>12:00 - 17:00</h5>
-			<h6><span class="location_pin_icon"></span> The Hague City</h6>
-		</div>
-	</div>
-	<div class="agenda_month">January 2022</div>
-	<div class="agenda_item_1">
-		<div class="agenda_date_1">
-			<h3>SAT</h3>
-			<h2>15</h2>
-		</div>
-		<div class="agenda_desc_1">
-			<a href="Agenda/Jan_15_B.html">Batavierenrace</a>
-			<h5><span class="location_pin_icon"></span> Online</h5>
-		</div>
-	</div>
-	<div class="agenda_item_1">
-		<div class="agenda_date_1">
-			<h3>TUE</h3>
-			<h2>25</h2>
-		</div>
-		<div class="agenda_desc_1">
-			<a href="Agenda/Jan_25_SDJC.html">Student DJ Contest</a>
-			<h5><span class="location_pin_icon"></span> Online</h5>
-		</div>
-	</div>
-</div>
+<div id="agenda_content" onscroll="AgendaScroll()"></div>
 <div id="agenda_overflow_top"></div>
 <div id="agenda_overflow_bottom"></div>
 <footer>
@@ -210,7 +113,7 @@
 		background-color: #2c41e5;
 		background-image: url("src/close_white.png");
 		background-size: 0px 0px;
-		background-position: calc(100% - 30px) 18px;
+		background-position: calc(100% - 13px) 35px;
 		background-repeat: no-repeat;
 		padding: 15px 40px;
 		margin-left: 10px;
@@ -280,7 +183,7 @@
 		position: relative;
 		left: 50px;
 	}
-	.agenda_item_1, .agenda_item_2 {
+	/*.agenda_item_1, .agenda_item_2 {
 		width: 100%;
 		position: relative;
 	}
@@ -340,6 +243,58 @@
 		top: 30px;
 	}
 	.agenda_desc_1 h6, .agenda_desc_2 h6 {
+		font-size: 42px;
+		font-weight: 100;
+		color: white;
+		margin: 0px;
+		position: relative;
+		top: -25px;
+		left: 300px;
+	}*/
+	.agenda_item {
+		width: 100%;
+		position: relative;
+	}
+	.agenda_date {
+		width: 100%;
+		color: white;
+		position: relative;
+		top: 60px;
+		left: 50px;
+	}
+	.agenda_date h3 {
+		font-size: 48px;
+		font-weight: 100;
+		margin: 0px;
+	}
+	.agenda_date h2 {
+		font-size: 84px;
+		margin: 0px;
+	}
+	.agenda_desc {
+		height: 290px;
+		width: calc(100% - 250px);
+		border-bottom: 4px solid white;
+		position: relative;
+		top: -150px;
+		left: 230px;
+	}
+	.agenda_desc a {
+		font-size: 54px;
+		line-height: 1.2;
+		color: white;
+		text-decoration: none;
+		margin: 0px;
+	}
+	.agenda_desc h5 {
+		font-size: 42px;
+		font-weight: 100;
+		color: white;
+		margin: 0px;
+		position: relative;
+		top: 30px;
+	}
+	.agenda_desc h6 {
 		font-size: 42px;
 		font-weight: 100;
 		color: white;
@@ -467,80 +422,96 @@
 		0% {
 			padding-right: 40px;
 			background-size: 0px 0px;
+			background-position: calc(100% - 13px) 35px;
 		}
 		100% {
 			padding-right: 90px;
 			background-size: 34px 34px;
+			background-position: calc(100% - 30px) 18px;
 		}
 	}
 	@-moz-keyframes HideFiltersIndex {
 		0% {
 			padding-right: 40px;
 			background-size: 0px 0px;
+			background-position: calc(100% - 13px) 35px;
 		}
 		100% {
 			padding-right: 90px;
 			background-size: 34px 34px;
+			background-position: calc(100% - 30px) 18px;
 		}
 	}
 	@-o-keyframes HideFiltersIndex {
 		0% {
 			padding-right: 40px;
 			background-size: 0px 0px;
+			background-position: calc(100% - 13px) 35px;
 		}
 		100% {
 			padding-right: 90px;
 			background-size: 34px 34px;
+			background-position: calc(100% - 30px) 18px;
 		}
 	}
 	@keyframes HideFiltersIndex {
 		0% {
 			padding-right: 40px;
 			background-size: 0px 0px;
+			background-position: calc(100% - 13px) 35px;
 		}
 		100% {
 			padding-right: 90px;
 			background-size: 34px 34px;
+			background-position: calc(100% - 30px) 18px;
 		}
 	}
 	@-webkit-keyframes ShowFiltersIndex {
 		0% {
 			padding-right: 90px;
 			background-size: 34px 34px;
+			background-position: calc(100% - 30px) 18px;
 		}
 		100% {
 			padding-right: 40px;
 			background-size: 0px 0px;
+			background-position: calc(100% - 13px) 35px;
 		}
 	}
 	@-moz-keyframes ShowFiltersIndex {
 		0% {
 			padding-right: 90px;
 			background-size: 34px 34px;
+			background-position: calc(100% - 30px) 18px;
 		}
 		100% {
 			padding-right: 40px;
 			background-size: 0px 0px;
+			background-position: calc(100% - 13px) 35px;
 		}
 	}
 	@-o-keyframes ShowFiltersIndex {
 		0% {
 			padding-right: 90px;
 			background-size: 34px 34px;
+			background-position: calc(100% - 30px) 18px;
 		}
 		100% {
 			padding-right: 40px;
 			background-size: 0px 0px;
+			background-position: calc(100% - 13px) 35px;
 		}
 	}
 	@keyframes ShowFiltersIndex {
 		0% {
 			padding-right: 90px;
 			background-size: 34px 34px;
+			background-position: calc(100% - 30px) 18px;
 		}
 		100% {
 			padding-right: 40px;
 			background-size: 0px 0px;
+			background-position: calc(100% - 13px) 35px;
 		}
 	}
 	@-webkit-keyframes HideFiltersRight {
@@ -664,6 +635,61 @@
 		// Alt + Enter
 		if (event.altKey && event.keyCode == 13 || event.altKey && event.which == 13) { event.preventDefault(); }
 	});
+	var AgendaContent = document.getElementById("agenda_content");
+	var AgendaDateCnt = [];
+	var AgendaContentList = [
+		["MON", 27, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
+		["MON", 27, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["TUE", 28, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
+		["TUE", 28, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["WED", 29, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
+		["WED", 29, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["THU", 30, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
+		["THU", 30, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["FRI", 31, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["SAT", 15, 01, 2022, "Batavierenrace", "", "Online", ["Sport & Games"]],
+		["TUE", 25, 01, 2022, "Student DJ Contest", "", "Online", ["Other"]]
+	];
+	var FiltersContentList = [];
+	var AgendaMonthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+	var AgendaContentHTML = "";
+	var TagsContainOther = false;
+	for (var i = 0; i < AgendaContentList.length; i++) {
+		if (AgendaDateCnt.includes(AgendaContentList[i][2] + "_" + AgendaContentList[i][3]) == false) {
+			AgendaContentHTML += "<div class=\"agenda_month\" dval=\"" + AgendaContentList[i][2] + "_" + AgendaContentList[i][3] + "\">" + AgendaMonthNames[AgendaContentList[i][2] - 1] + " " + AgendaContentList[i][3] + "</div>";
+			AgendaDateCnt.push(AgendaContentList[i][2] + "_" + AgendaContentList[i][3]);
+		}
+		AgendaContentHTML += "<div class=\"agenda_item\" style=\"height:360px;\" tags=\"";
+		for (var t = 0; t < AgendaContentList[i][7].length; t++) {
+			AgendaContentHTML += AgendaContentList[i][7][t] + ",";
+			if (FiltersContentList.includes(AgendaContentList[i][7][t]) == false) {
+				if (AgendaContentList[i][7][t] != "Other") {
+					header_filters_box.innerHTML = header_filters_box.innerHTML + "<span class=\"header_filter\" onclick=\"FilterAgenda(\'" + AgendaContentList[i][7][t] + "\', " + FiltersContentList.length + ")\">" + AgendaContentList[i][7][t] + "</span>";
+					FiltersContentList.push(AgendaContentList[i][7][t]);
+				}
+				else {
+					TagsContainOther = true;
+				}
+			}
+		}
+		AgendaContentHTML += "\" dval=\"" + AgendaContentList[i][2] + "_" + AgendaContentList[i][3] + "\"><div class=\"agenda_date\"><h3>" + AgendaContentList[i][0] + "</h3><h2>" + AgendaContentList[i][1] + "</h2></div><div class=\"agenda_desc\"><a>" + AgendaContentList[i][4] + "</a>";
+		if (AgendaContentList[i][5] != "") {
+			AgendaContentHTML += "<h5>" + AgendaContentList[i][5] + "</h5><h6><span class=\"location_pin_icon\"></span> " + AgendaContentList[i][6] + "</h6>";
+		}
+		else {
+			AgendaContentHTML += "<h5><span class=\"location_pin_icon\"></span> " + AgendaContentList[i][6] + "</h5>";
+		}
+		AgendaContentHTML += "</div></div>";
+	}
+	if (TagsContainOther) {
+		header_filters_box.innerHTML = header_filters_box.innerHTML + "<span class=\"header_filter\" onclick=\"FilterAgenda(\'Other\', " + FiltersContentList.length + ")\">Other</span>";
+	}
+	AgendaContent.innerHTML = AgendaContentHTML;
+	for (var i = 0; i < document.getElementsByClassName("agenda_desc").length; i++) {
+		document.getElementsByClassName("agenda_item")[i].style.height = (Number(document.getElementsByClassName("agenda_desc")[i].getElementsByTagName("a")[0].offsetHeight) + 235) + "px";
+		document.getElementsByClassName("agenda_desc")[i].style.height = (Number(document.getElementsByClassName("agenda_desc")[i].getElementsByTagName("a")[0].offsetHeight) + 170) + "px";
+		document.getElementsByClassName("agenda_date")[i].style.top = ((Number(document.getElementsByClassName("agenda_desc")[i].offsetHeight) - 151) / 2) + "px";
+	}
 	function FilterScroll() {
 		document.getElementById("header_filter_overflow_left").style.opacity = Math.min((Number(document.getElementById("header_filters_box").scrollLeft) / 20), 1);
 		document.getElementById("header_filter_overflow_right").style.opacity = Math.min(((Number(document.getElementById("header_filters_box").scrollWidth) - document.getElementById("header_filters_box").clientWidth - Number(document.getElementById("header_filters_box").scrollLeft)) / 20), 1);
@@ -677,11 +703,11 @@
 		document.getElementById("header_filters_box").style.overflowX = "hidden";
 		var IndexAbsLeft = 0;
 		for (var i = (FilterIndex - 1); i >= 0; i--) {
-			IndexAbsLeft += (Number(document.getElementsByClassName("header_filter")[i].offsetWidth) + 14);
+			IndexAbsLeft += (Number(HFilterClass[i].offsetWidth) + 14);
 			HFilterClass[i].style.webkitAnimation = "0.5s ease HideFiltersLeft 1";
 			HFilterClass[i].style.animation = "0.5s ease HideFiltersLeft 1";
 		}
-		for (var i = (FilterIndex + 1); i < document.getElementsByClassName("header_filter").length; i++) {
+		for (var i = (FilterIndex + 1); i < HFilterClass.length; i++) {
 			HFilterClass[i].style.webkitAnimation = "0.5s ease HideFiltersRight 1";
 			HFilterClass[i].style.animation = "0.51s ease HideFiltersRight 1";
 		}
@@ -692,12 +718,13 @@
 				HFilterClass[i].style.opacity = 0;
 				HFilterClass[i].style.pointerEvents = "none";
 			}
-			for (var i = (FilterIndex + 1); i < document.getElementsByClassName("header_filter").length; i++) {
+			for (var i = (FilterIndex + 1); i < HFilterClass.length; i++) {
 				HFilterClass[i].style.opacity = 0;
 				HFilterClass[i].style.pointerEvents = "none";
 			}
-			document.getElementsByClassName("header_filter")[FilterIndex].style.paddingRight = "90px";
-			document.getElementsByClassName("header_filter")[FilterIndex].style.backgroundSize = "34px 34px";
+			HFilterClass[FilterIndex].style.paddingRight = "90px";
+			HFilterClass[FilterIndex].style.backgroundSize = "34px 34px";
+			HFilterClass[FilterIndex].style.backgroundPosition = "calc(100% - 30px) 18px";
 		}, 450);
 		var IndexStart = parseInt(window.getComputedStyle(HFilterClass[FilterIndex]).getPropertyValue("left"), 10);
 		var IndexFinal = (0 - IndexAbsLeft - 10 + Number(document.getElementById("header_filters_box").scrollLeft) + (Number(document.getElementById("header_filters_box").offsetWidth - Number(HFilterClass[FilterIndex].offsetWidth + 90)) / 2));
@@ -737,7 +764,7 @@
 			HFilterClass[i].style.webkitAnimation = "0.5s ease ShowFiltersLeft 1";
 			HFilterClass[i].style.animation = "0.5s ease ShowFiltersLeft 1";
 		}
-		for (var i = (FilterIndex + 1); i < document.getElementsByClassName("header_filter").length; i++) {
+		for (var i = (FilterIndex + 1); i < HFilterClass.length; i++) {
 			HFilterClass[i].style.webkitAnimation = "0.5s ease ShowFiltersRight 1";
 			HFilterClass[i].style.animation = "0.51s ease ShowFiltersRight 1";
 		}
@@ -748,19 +775,19 @@
 				HFilterClass[i].style.opacity = 1;
 				HFilterClass[i].style.pointerEvents = "auto";
 			}
-			for (var i = (FilterIndex + 1); i < document.getElementsByClassName("header_filter").length; i++) {
+			for (var i = (FilterIndex + 1); i < HFilterClass.length; i++) {
 				HFilterClass[i].style.opacity = 1;
 				HFilterClass[i].style.pointerEvents = "auto";
 			}
-			document.getElementsByClassName("header_filter")[FilterIndex].style.paddingRight = "40px";
-			document.getElementsByClassName("header_filter")[FilterIndex].style.backgroundSize = "0px 0px";
+			HFilterClass[FilterIndex].style.paddingRight = "40px";
+			HFilterClass[FilterIndex].style.backgroundSize = "0px 0px";
+			HFilterClass[FilterIndex].style.backgroundPosition = "calc(100% - 13px) 35px";
 			document.getElementById("header_filters_box").style.overflowX = "auto";
 		}, 450);
 		var IndexStart = parseInt(window.getComputedStyle(HFilterClass[FilterIndex]).getPropertyValue("left"), 10);
 		var IndexFinal = -10;
 		if (IndexFinal < IndexStart) {
 			var IndexDifference = (IndexStart - IndexFinal);
-			console.log(IndexDifference);
 			var SlideIndexCount = 0;
 			var SlideIndexInterval = setInterval(function () {
 				var IndexLeftVal = parseInt(window.getComputedStyle(HFilterClass[FilterIndex]).getPropertyValue("left"), 10);
@@ -769,7 +796,6 @@
 				}
 				else {
 					HFilterClass[FilterIndex].style.left = ((IndexDifference * -Math.sin(SlideIndexCount / 25)) + IndexDifference - 11) + "px";
-					console.log("A");
 					SlideIndexCount++;
 				}
 			}, 10);
@@ -784,7 +810,6 @@
 				}
 				else {
 					HFilterClass[FilterIndex].style.left = (IndexDifference * Math.sin(SlideIndexCount / 25) - IndexDifference) + "px";
-					console.log("B");
 					SlideIndexCount++;
 				}
 			}, 10);
