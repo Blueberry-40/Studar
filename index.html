@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html><html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=0.4" />
     <meta charset="utf-8" />
     <title>Student Radar App</title>
 </head>
@@ -13,6 +14,13 @@
 	</header>
 <div id="agenda_content" onscroll="AgendaScroll()">
 	<div id="agenda_frame"></div>
+</div>
+<div id="agenda_popup">
+	<h1 id="agenda_popup_title">[ Title ]</h1>
+	<h3 id="agenda_popup_date">[ Date ]</h3>
+	<h5 id="agenda_popup_time">[ Time ]</h5>
+	<h5 id="agenda_popup_location">[ Location ]</h5>
+	<div id="agenda_popup_description"><p>[ Description ]</p></div>
 </div>
 <div id="agenda_overflow_top"></div>
 <div id="agenda_overflow_bottom"></div>
@@ -164,6 +172,68 @@
 		top: 0px;
 		left: 0px;
 	}
+	#agenda_popup {
+		display: none;
+		width: 100%;
+		height: calc(100% - 180px);
+		overflow-x: hidden;
+		overflow-y: auto;
+		background: black;
+		padding: 100px 0px;
+		box-sizing: border-box;
+		position: fixed;
+		z-index: 2;
+		top: 0px;
+		left: 0px;
+	}
+	#agenda_popup_title {
+		width: calc(100% - 160px);
+		margin: 0px;
+		font-size: 84px;
+		font-weight: 600;
+		color: #89ffe0;
+		position: relative;
+		top: 100px;
+		left: 80px;
+	}
+	#agenda_popup_date {
+		width: calc(100% - 160px);
+		margin: 120px 0px 0px 0px;
+		font-size: 60px;
+		font-weight: 600;
+		color: white;
+		position: relative;
+		top: 100px;
+		left: 80px;
+	}
+	#agenda_popup_time {
+		width: calc(100% - 160px);
+		margin: 60px 0px 0px 0px;
+		font-size: 42px;
+		font-weight: 300;
+		color: white;
+		position: relative;
+		top: 100px;
+		left: 80px;
+	}
+	#agenda_popup_location {
+		width: calc(100% - 160px);
+		margin: 20px 0px 0px 0px;
+		font-size: 42px;
+		font-weight: 300;
+		color: white;
+		position: relative;
+		top: 100px;
+		left: 80px;
+	}
+	#agenda_popup_description {
+		width: calc(100% - 160px);
+		margin: 80px 0px 0px 0px;
+		color: white;
+		position: relative;
+		top: 100px;
+		left: 80px;
+	}
 	#agenda_overflow_top {
 		width: 100%;
 		height: 240px;
@@ -256,11 +326,22 @@
 		position: relative;
 		top: 12px;
 	}
+	.clock_pin_icon {
+		display: inline-block;
+		width: 50px;
+		height: 50px;
+		background: url('src/clock_green.png');
+		background-size: 100%;
+		background-position: center;
+		position: relative;
+		top: 12px;
+	}
 	footer {
 		width: 100%;
 		height: 180px;
 		background: black;
 		position: fixed;
+		z-index: 100;
 		bottom: 0px;
 		left: 0px;
 	}
@@ -584,15 +665,15 @@
 	var AgendaContent = document.getElementById("agenda_content");
 	var AgendaDateCnt = [];
 	var AgendaContentList = [
-		["MON", 27, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
-		["MON", 27, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
-		["TUE", 28, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
-		["TUE", 28, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
-		["WED", 29, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
-		["WED", 29, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
-		["THU", 30, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"]],
-		["THU", 30, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
-		["FRI", 31, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"]],
+		["MON", 27, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], "<h1 style=\"line-height:1.2;font-size:72px;font-weight:300;\">Are you 'Home Alone' around Christmas? Don't worry, we've got you!</h1><p style=\"line-height:1.5;font-size:24px;\"><i>The Christmas City Tour has been changed due to covid restrictions.<br><br>As you know, the government has installed new restrictions. This means that the shops and restaurants are closed and the new rules state that it is not allowed to be outside with a group that consists of more that 2. We've had to cancel the tour of how we planned it before the restrictions with a heavy heart. We don't think it's appropriate to charge € 6,50 for a tour where we cannot give participants what was promised.<br><br>As a result of this we have decided to give everyone the <b>tour for free</b>! However, you will not get a goodiebag, free drinks or prizes. The least we can do is give you the route and the challenges, just for fun. Yes, you may walk past closed stores and may not be able to drink hot chocolate, but the route is still interesting and lets you explore new places. You may find something to remember after covid times.<br><br>You can find the route for free in the google document: (LINK)<br><br>Or on your instagram page: (LINK)<br><br>With that being said, we wish you a merry Christmas and a happy new year!</i></p>"],
+		["MON", 27, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], "<p style=\"line-height:1.5;font-size:24px;\">For the second year, December will not be the festive month that young people in The Hague had hoped for. This is why the Municipality of The Hague, together with involved organizations in the city, will again present an online program during the Christmas holidays.<br><br>Under the heading 'Winter Program The Hague Inside Out', activities will take place from the 27<sup>th</sup> to the 31<sup>st</sup> of December. Programs are recorded and streamed from a studio on the Pier of Scheveningen. PIP Den Haag provides a humorous news show, and Culture Club 4 U is back with a late night show with panel discussions and a wheel of fortune. The bingo of Stagehuis Schilderswijk takes place every day.<br><br>An offer of dance, rap battles and music is also plentiful. During a challenge, famous artists and influencers challenge eachother. Viewers can then earn prizes. Even a do-it-yourself cooking program is part of the winter program in which young people are challenged to make the recipes at home.<br><br>Each day has a fixed program with varying content and guests. The complete overview of 'Winter Program The Hague Inside Out' can be found on <a style=\"color:#3880ff;\" href=\"denhaaginsideout.nl\">denhaaginsideout.nl</a> and via the social media <a style=\"color:#3880ff;\" href=\"https://www.instagram.com/denhaaginsideout/\">@denhaaginsideout</a>.</p>"],
+		["TUE", 28, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], "<h1 style=\"line-height:1.2;font-size:72px;font-weight:300;\">Are you 'Home Alone' around Christmas? Don't worry, we've got you!</h1><p style=\"line-height:1.5;font-size:24px;\"><i>The Christmas City Tour has been changed due to covid restrictions.<br><br>As you know, the government has installed new restrictions. This means that the shops and restaurants are closed and the new rules state that it is not allowed to be outside with a group that consists of more that 2. We've had to cancel the tour of how we planned it before the restrictions with a heavy heart. We don't think it's appropriate to charge € 6,50 for a tour where we cannot give participants what was promised.<br><br>As a result of this we have decided to give everyone the <b>tour for free</b>! However, you will not get a goodiebag, free drinks or prizes. The least we can do is give you the route and the challenges, just for fun. Yes, you may walk past closed stores and may not be able to drink hot chocolate, but the route is still interesting and lets you explore new places. You may find something to remember after covid times.<br><br>You can find the route for free in the google document: (LINK)<br><br>Or on your instagram page: (LINK)<br><br>With that being said, we wish you a merry Christmas and a happy new year!</i></p>"],
+		["TUE", 28, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], "<p style=\"line-height:1.5;font-size:24px;\">For the second year, December will not be the festive month that young people in The Hague had hoped for. This is why the Municipality of The Hague, together with involved organizations in the city, will again present an online program during the Christmas holidays.<br><br>Under the heading 'Winter Program The Hague Inside Out', activities will take place from the 27<sup>th</sup> to the 31<sup>st</sup> of December. Programs are recorded and streamed from a studio on the Pier of Scheveningen. PIP Den Haag provides a humorous news show, and Culture Club 4 U is back with a late night show with panel discussions and a wheel of fortune. The bingo of Stagehuis Schilderswijk takes place every day.<br><br>An offer of dance, rap battles and music is also plentiful. During a challenge, famous artists and influencers challenge eachother. Viewers can then earn prizes. Even a do-it-yourself cooking program is part of the winter program in which young people are challenged to make the recipes at home.<br><br>Each day has a fixed program with varying content and guests. The complete overview of 'Winter Program The Hague Inside Out' can be found on <a style=\"color:#3880ff;\" href=\"denhaaginsideout.nl\">denhaaginsideout.nl</a> and via the social media <a style=\"color:#3880ff;\" href=\"https://www.instagram.com/denhaaginsideout/\">@denhaaginsideout</a>.</p>"],
+		["WED", 29, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], "<h1 style=\"line-height:1.2;font-size:72px;font-weight:300;\">Are you 'Home Alone' around Christmas? Don't worry, we've got you!</h1><p style=\"line-height:1.5;font-size:24px;\"><i>The Christmas City Tour has been changed due to covid restrictions.<br><br>As you know, the government has installed new restrictions. This means that the shops and restaurants are closed and the new rules state that it is not allowed to be outside with a group that consists of more that 2. We've had to cancel the tour of how we planned it before the restrictions with a heavy heart. We don't think it's appropriate to charge € 6,50 for a tour where we cannot give participants what was promised.<br><br>As a result of this we have decided to give everyone the <b>tour for free</b>! However, you will not get a goodiebag, free drinks or prizes. The least we can do is give you the route and the challenges, just for fun. Yes, you may walk past closed stores and may not be able to drink hot chocolate, but the route is still interesting and lets you explore new places. You may find something to remember after covid times.<br><br>You can find the route for free in the google document: (LINK)<br><br>Or on your instagram page: (LINK)<br><br>With that being said, we wish you a merry Christmas and a happy new year!</i></p>"],
+		["WED", 29, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], "<p style=\"line-height:1.5;font-size:24px;\">For the second year, December will not be the festive month that young people in The Hague had hoped for. This is why the Municipality of The Hague, together with involved organizations in the city, will again present an online program during the Christmas holidays.<br><br>Under the heading 'Winter Program The Hague Inside Out', activities will take place from the 27<sup>th</sup> to the 31<sup>st</sup> of December. Programs are recorded and streamed from a studio on the Pier of Scheveningen. PIP Den Haag provides a humorous news show, and Culture Club 4 U is back with a late night show with panel discussions and a wheel of fortune. The bingo of Stagehuis Schilderswijk takes place every day.<br><br>An offer of dance, rap battles and music is also plentiful. During a challenge, famous artists and influencers challenge eachother. Viewers can then earn prizes. Even a do-it-yourself cooking program is part of the winter program in which young people are challenged to make the recipes at home.<br><br>Each day has a fixed program with varying content and guests. The complete overview of 'Winter Program The Hague Inside Out' can be found on <a style=\"color:#3880ff;\" href=\"denhaaginsideout.nl\">denhaaginsideout.nl</a> and via the social media <a style=\"color:#3880ff;\" href=\"https://www.instagram.com/denhaaginsideout/\">@denhaaginsideout</a>.</p>"],
+		["THU", 30, 12, 2021, "Christmas City Tour (27-30 DEC)", "12:00 - 17:00", "The Hague City", ["Hi The Hague", "Food & Drinks", "Sport & Games", "Workshops & Seminars"], "<h1 style=\"line-height:1.2;font-size:72px;font-weight:300;\">Are you 'Home Alone' around Christmas? Don't worry, we've got you!</h1><p style=\"line-height:1.5;font-size:24px;\"><i>The Christmas City Tour has been changed due to covid restrictions.<br><br>As you know, the government has installed new restrictions. This means that the shops and restaurants are closed and the new rules state that it is not allowed to be outside with a group that consists of more that 2. We've had to cancel the tour of how we planned it before the restrictions with a heavy heart. We don't think it's appropriate to charge € 6,50 for a tour where we cannot give participants what was promised.<br><br>As a result of this we have decided to give everyone the <b>tour for free</b>! However, you will not get a goodiebag, free drinks or prizes. The least we can do is give you the route and the challenges, just for fun. Yes, you may walk past closed stores and may not be able to drink hot chocolate, but the route is still interesting and lets you explore new places. You may find something to remember after covid times.<br><br>You can find the route for free in the google document: (LINK)<br><br>Or on your instagram page: (LINK)<br><br>With that being said, we wish you a merry Christmas and a happy new year!</i></p>"],
+		["THU", 30, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], "<p style=\"line-height:1.5;font-size:24px;\">For the second year, December will not be the festive month that young people in The Hague had hoped for. This is why the Municipality of The Hague, together with involved organizations in the city, will again present an online program during the Christmas holidays.<br><br>Under the heading 'Winter Program The Hague Inside Out', activities will take place from the 27<sup>th</sup> to the 31<sup>st</sup> of December. Programs are recorded and streamed from a studio on the Pier of Scheveningen. PIP Den Haag provides a humorous news show, and Culture Club 4 U is back with a late night show with panel discussions and a wheel of fortune. The bingo of Stagehuis Schilderswijk takes place every day.<br><br>An offer of dance, rap battles and music is also plentiful. During a challenge, famous artists and influencers challenge eachother. Viewers can then earn prizes. Even a do-it-yourself cooking program is part of the winter program in which young people are challenged to make the recipes at home.<br><br>Each day has a fixed program with varying content and guests. The complete overview of 'Winter Program The Hague Inside Out' can be found on <a style=\"color:#3880ff;\" href=\"denhaaginsideout.nl\">denhaaginsideout.nl</a> and via the social media <a style=\"color:#3880ff;\" href=\"https://www.instagram.com/denhaaginsideout/\">@denhaaginsideout</a>.</p>"],
+		["FRI", 31, 12, 2021, "Winter Program The Hague Inside Out (27-31 DEC)", "", "Online", ["Other"], "<p style=\"line-height:1.5;font-size:24px;\">For the second year, December will not be the festive month that young people in The Hague had hoped for. This is why the Municipality of The Hague, together with involved organizations in the city, will again present an online program during the Christmas holidays.<br><br>Under the heading 'Winter Program The Hague Inside Out', activities will take place from the 27<sup>th</sup> to the 31<sup>st</sup> of December. Programs are recorded and streamed from a studio on the Pier of Scheveningen. PIP Den Haag provides a humorous news show, and Culture Club 4 U is back with a late night show with panel discussions and a wheel of fortune. The bingo of Stagehuis Schilderswijk takes place every day.<br><br>An offer of dance, rap battles and music is also plentiful. During a challenge, famous artists and influencers challenge eachother. Viewers can then earn prizes. Even a do-it-yourself cooking program is part of the winter program in which young people are challenged to make the recipes at home.<br><br>Each day has a fixed program with varying content and guests. The complete overview of 'Winter Program The Hague Inside Out' can be found on <a style=\"color:#3880ff;\" href=\"denhaaginsideout.nl\">denhaaginsideout.nl</a> and via the social media <a style=\"color:#3880ff;\" href=\"https://www.instagram.com/denhaaginsideout/\">@denhaaginsideout</a>.</p>"],
 		["SAT", 15, 01, 2022, "Batavierenrace", "", "Online", ["Sport & Games"]],
 		["TUE", 25, 01, 2022, "Student DJ Contest", "", "Online", ["Other"]]
 	];
@@ -605,7 +686,7 @@
 			AgendaContentHTML += "<div class=\"agenda_month\" dval=\"" + AgendaContentList[i][2] + "_" + AgendaContentList[i][3] + "\">" + AgendaMonthNames[AgendaContentList[i][2] - 1] + " " + AgendaContentList[i][3] + "</div>";
 			AgendaDateCnt.push(AgendaContentList[i][2] + "_" + AgendaContentList[i][3]);
 		}
-		AgendaContentHTML += "<div class=\"agenda_item\" style=\"height:360px;\" tags=\"";
+		AgendaContentHTML += "<div class=\"agenda_item\" onclick=\"ItemOpen(" + i + ")\" style=\"height:360px;\" tags=\"";
 		for (var t = 0; t < AgendaContentList[i][7].length; t++) {
 			AgendaContentHTML += AgendaContentList[i][7][t] + ",";
 			if (FiltersContentList.includes(AgendaContentList[i][7][t]) == false) {
@@ -832,6 +913,23 @@
 			document.getElementsByClassName("agenda_desc")[i].style.height = (Number(document.getElementsByClassName("agenda_desc")[i].getElementsByTagName("a")[0].offsetHeight) + 170) + "px";
 			document.getElementsByClassName("agenda_date")[i].style.top = ((Number(document.getElementsByClassName("agenda_desc")[i].offsetHeight) - 151) / 2) + "px";
 		}
+	}
+
+// Show agenda popup
+	function ItemOpen(ItemIndex) {
+		document.getElementById("agenda_popup").style.display = "block";
+		document.getElementById("agenda_popup_time").style.display = "block";
+		document.getElementById("agenda_popup_title").innerHTML = AgendaContentList[ItemIndex][4];
+		document.getElementById("agenda_popup_date").innerHTML = AgendaContentList[ItemIndex][1] + " " + AgendaMonthNames[AgendaContentList[ItemIndex][2] - 1] + " " + AgendaContentList[ItemIndex][3];
+		if (AgendaContentList[ItemIndex][5] != "") {
+			document.getElementById("agenda_popup_time").innerHTML = "<span class=\"clock_pin_icon\"></span> " + AgendaContentList[ItemIndex][5];
+		}
+		else {
+			document.getElementById("agenda_popup_time").style.display = "none";
+		}
+		document.getElementById("agenda_popup_location").innerHTML = "<span class=\"location_pin_icon\"></span> " + AgendaContentList[ItemIndex][6];
+		document.getElementById("agenda_popup_description").innerHTML = AgendaContentList[ItemIndex][8];
+		// ["TUE", 25, 01, 2022, "Student DJ Contest", "", "Online", ["Other"], "INFO"]
 	}
 </script>
 </body></html>
