@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Student Radar App</title>
@@ -133,7 +133,7 @@
 	if ((window.outerHeight / window.outerWidth) >= 1) {
 		document.getElementById("OnlyMobile").style.display = "none";
 	}
-	//document.body.addEventListener("contextmenu", function (event) { event.preventDefault(); });
+	document.body.addEventListener("contextmenu", function (event) { event.preventDefault(); });
 	document.body.addEventListener("keydown", function (event) {
 		// F12
 		if (event.keyCode == 123 || event.which == 123) { event.preventDefault(); }
